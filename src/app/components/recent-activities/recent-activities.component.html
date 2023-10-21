@@ -1,0 +1,20 @@
+<div class="container">
+    <h4>Recent Activities</h4>
+    <hr>
+    <div class="row">
+      <!-- <div class="col-md-6"> -->
+        <div *ngFor="let activity of activities;index as i" class="card">
+          <div class="card-header">
+            <h5 class="card-title">Activity {{i + 1}}</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text"><a (click)="gotoProfile(activity?.comment_owner?.id)" style="color:cornflowerblue" role="button">{{activity?.comment_owner?.first_name + ' ' + activity?.comment_owner?.last_name}}</a> 
+              comment "{{activity?.body}}" on room <a (click)="gotoRoom(activity?.room)" style="color:cornflowerblue" role="button">{{activity?.room?.name}}</a></p>
+          </div>
+          <div class="card-footer text-muted"> 
+            {{activity.created | date: 'd, MMMM, YYYY'}}
+          </div>
+        </div>
+    </div>
+  </div>
+  

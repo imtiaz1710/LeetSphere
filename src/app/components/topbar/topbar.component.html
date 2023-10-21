@@ -1,0 +1,18 @@
+<div class="top-bar">
+    <div *ngIf="isSearchEnable" class="search-box">
+        <input [(ngModel)]="searchText" type="text" placeholder="Search">
+        <button (click)="search()">Search</button>
+    </div>
+    <div *ngIf="!isSearchEnable"></div>
+    <div *ngIf="!isLogin" class="login">
+        <button (click)="logIn()">Login</button>
+    </div>
+    <div *ngIf="isLogin" class="profile-dropdown">
+        <div (click)="toggleProfileOptions()" style="font-size:30px;color:lightblue;margin-right: 2rem;"
+            class="bi bi-person"></div>
+        <ul style="margin-top: 1rem;" *ngIf="isVisibleProfileOptions">
+            <li (click)="gotoLoginUserProfile()">Profile</li>
+            <li (click)="logout()">Logout</li>
+        </ul>
+    </div>
+</div>

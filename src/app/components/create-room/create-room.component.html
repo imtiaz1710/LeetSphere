@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h4 class="modal-title">Create Room</h4>
+    <button type="button" class="close" (click)="dismiss()">
+        <span>&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form #createPostForm="ngForm">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" class="form-control" [(ngModel)]="name" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea rows="7" cols="50" id="description" name="description" class="form-control" [(ngModel)]="description"
+                required></textarea>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="dismiss()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="saveRoom()">Save</button>
+</div>

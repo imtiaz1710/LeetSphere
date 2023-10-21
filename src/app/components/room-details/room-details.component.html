@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+      <div class="col-10">
+        <div class="post-container">
+          <div class="post-header">
+            <div class="post-title">{{ room?.name }}</div>
+            <!-- <div class="post-date">March 1, 2023</div> -->
+          </div>
+          <div class="post-description">
+            <p>{{ room?.description }}</p>
+          </div>
+          <div style="padding: 15px;">
+            <span style="font-weight: bold">Host: &nbsp; </span> <img class="comment-avatar"
+              [src]="room?.host?.image_url">
+            <span role="button" style="color:cornflowerblue"
+              class="comment-author" (click)="gotoProfile(room?.host?.id)">{{room?.host?.first_name + ' ' +  room?.host?.last_name}}</span>
+          </div>
+          <div class="post-footer">
+            <!-- <div class="post-likes">20 likes</div> -->
+            <div class="post-comment-count">{{room?.comments.count}} comments</div>
+          </div>
+          <div>
+            <!-- <div class="comment-header">
+              <div class="comment-title">Comments</div>
+              <div class="comment-count">5 comments</div>
+            </div> -->
+            <div>
+              <form class="comment-form">
+                <textarea id="comment{{room?.id}}" placeholder="Write a comment"></textarea>
+                <button (click)="addComment(room, 'New Comment')" type="submit" style="margin-top: 1rem;">Comment</button>
+              </form>
+              <div *ngFor="let comment of room?.comments" class="comment">
+                <div>
+                  <img class="comment-avatar" [src]="comment?.comment_owner?.image_url">
+                </div>
+                <div class="comment-content">
+                  <div class="comment-header">
+                    <div class="comment-author" (click)="gotoProfile(comment?.comment_owner?.id)" role="button">{{comment?.comment_owner.first_name + ' ' + comment?.comment_owner?.last_name}}</div>
+                    <div class="comment-date">{{comment?.created | date: 'd, MMMM, yyyy'}}</div>
+                  </div>
+                  <div class="comment-text">
+                    <p>{{comment?.body}}</p>
+                  </div>
+                  <!-- <div class="comment-actions">
+                    <div class="comment-action">
+                      <i class="fa fa-thumbs-up"></i>Like
+                    </div>
+                    <div class="comment-action">
+                      <i class="fa fa-comment"></i>Reply
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
